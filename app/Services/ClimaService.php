@@ -11,6 +11,7 @@ class ClimaService
     public static function forecast(string $ciudad): array
     {
         $appid='';
+        $appid=config('services.weather_api.key');
         $response = Http::get('https://api.openweathermap.org/geo/1.0/direct?q=' . urlencode($ciudad) . '&appid=' . $appid . '&limit=1');
         $lat = $response[0]['lat'];
         $lon = $response[0]['lon'];
