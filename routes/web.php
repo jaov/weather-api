@@ -14,4 +14,12 @@ Route::get('home', function () {
 
 Route::get('dashboard', function () { return view('dashboard');});
 
-Route::get('clima/{ciudad}', [ClimaController::class, 'forecast']);
+Route::get('clima/{ciudad}', [ClimaController::class, 'forecast'])->middleware('auth:sanctum');
+
+Route::post('/tokens/create', function (Request $request) {
+    $token = $request->user()->createToken($request->token_name);
+
+    return ['token' => $token->plainTextToken];
+});
+
+Route::get('/user/token', function (Request $request) { return view('auth.token');})->middleware('auth:sanctum');
