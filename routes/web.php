@@ -14,7 +14,7 @@ Route::get('home', function () {
 
 Route::get('dashboard', function () { return view('dashboard');});
 
-Route::get('clima/{ciudad}', [ClimaController::class, 'forecast'])->middleware('auth:sanctum');
+Route::post('clima', function(Request $request) { $ciudad = $request->input('ciudad'); return ClimaController::forecast($ciudad);});
 
 Route::post('/tokens/create', function (Request $request) {
     $token = $request->user()->createToken($request->token_name);
