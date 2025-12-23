@@ -10,7 +10,7 @@ use Illuminate\Support\Exceptions\ValidationException;
 
 class TokenController extends Controller
 {
-    public static function create(Request $request) {
+    public function create(Request $request) {
     //
     $request->validate([
         'email' => 'required|email',
@@ -31,7 +31,7 @@ class TokenController extends Controller
         if (! $user || ! Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'Credenciales incorrectas',
-            ], 401);
+            ]);
         }
 
         $token = $user->createToken($request->token_name)->plainTextToken;
@@ -42,4 +42,19 @@ class TokenController extends Controller
             'type' => 'Bearer'
         ]);
     }
+
+    public function web_create(Request $request) {
+        $user = $request->user();
+        $token_name = $request->token_name;
+
+        if ($user && $user->tokens()->where('name', $token_name)->exists()) {
+            return ['message'=> 'Un token con este nombre ya existe en la cuenta'];
+        }
+
+        $token = $request->user()->createToken($token_name);
+
+        return ['token' => $token->plainTextToken,
+                'type' => 'Bearer'];
+    }
+
 }
