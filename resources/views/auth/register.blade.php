@@ -14,18 +14,18 @@
     <form action="/register" method="post">
         @csrf
 
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Name"/><br>
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" placeholder="Nombre"/><br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" placeholder="Email"/><br>
+        <label for="email">Correo:</label>
+        <input type="email" name="email" id="email" placeholder="Correo"/><br>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" placeholder="Password"/><br>
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password" placeholder="Contraseña"/><br>
 
-        <label for="password_confirmation">Confirm Password:</label>
-        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password"/><br>
+        <label for="password_confirmation">Confirmar Correo:</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmar Correo"/><br>
 
-        <button type="submit">Register</button>
+        <button type="submit">Registrar</button>
     </form>
 </div>
