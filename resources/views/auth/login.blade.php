@@ -13,10 +13,11 @@
     <h3>Login form</h3>
     <form action="/login" method="post">
         @csrf
-        <label for="email">Email</label>
-        <input name="email" type="email" placeholder="Email"/>
-        <label for="password">Password</label>
-        <input name="password" type="password" placeholder="Password">
-        <button type="submit">Submit</button>
+        <label for="email">Correo</label>
+        <input name="email" type="email" placeholder="Correo"/>
+        <label for="password">Contraseña</label>
+        <input name="password" type="password" placeholder="Contraseña">
+        <button type="submit">Submit</button> <br>
+        <p>¿No tiene una cuenta? <a href="/register">Regístrese</a></p>
     </form>
 </div>
