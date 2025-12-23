@@ -18,6 +18,16 @@ class ClimaService
         } else {
         $appid=config('services.weather_api.key');
 
+        if($appid == '' || $appid == null) {
+
+            error_log('La clave de API de openweather no está configurada, revisar el archivo .env');
+
+
+            return [
+                'message' => 'Error interno del servidor',
+            ];
+        }
+
         $response = Http::get('https://api.openweathermap.org/geo/1.0/direct?q=' . urlencode($ciudad) . '&appid=' . $appid . '&limit=1');
         $lat = $response[0]['lat'];
         $lon = $response[0]['lon'];
