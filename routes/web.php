@@ -14,6 +14,9 @@ Route::get('home', function () {
 
 Route::get('dashboard', function () { return view('dashboard');});
 
+
+Route::get('clima', function () { return view('clima');});
+
 Route::post('clima', function(Request $request) { $ciudad = $request->input('ciudad'); return ClimaController::forecast($ciudad);});
 
 Route::post('/tokens/create', function (Request $request) {
