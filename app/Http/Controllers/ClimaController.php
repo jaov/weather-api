@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Http;
 
 class ClimaController extends Controller
 {
-    //
-    public function forecast(string $ciudad) {
-        return ClimaService::forecast($ciudad);
+    public static function forecast(string $ciudad) {
+        $array =  ClimaService::forecast($ciudad);
+        if(isset($array['message'])) {
+            return response()->json($array,500);
+        } else {
+            return response()->json($array,200);
+        }
     }
 }
